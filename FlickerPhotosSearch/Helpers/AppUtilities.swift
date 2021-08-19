@@ -31,8 +31,4 @@ struct TitlesMessages {
     static let badResponse              = "Encountered an error while trying to connect to the server"
     static let cantReadResponse         = "Cannot read the response from server"
     static let noInternet               = "No Internet Connection available"
-    
-    // Other strings
-    static let singleSpace              = " "
-    static let doubleSpace              = "  "
 }

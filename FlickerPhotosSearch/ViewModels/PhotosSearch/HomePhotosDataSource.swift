@@ -26,8 +26,9 @@ class HomePhotosDataSource<Cell: HomePhotosCell, T>: NSObject, UICollectionViewD
         self.selectedPhotoModel = selectedPhotoModel
     }
     
+    // TODO: Its better if we show saved photos and Flicker photos in each section.
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: read saved images from Directory and apply two section
         items.count
     }
     

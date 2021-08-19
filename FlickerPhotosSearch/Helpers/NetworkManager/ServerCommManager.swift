@@ -29,7 +29,7 @@ public class ServerCommManager: NSObject {
                                         onSuccess :@escaping successCompletion,
                                         onFailure : @escaping failureCompletion){
         
-        // 1 Internet Connection Avail?
+        // 1 Internet connection available?
 //        if !networkReachability.isReachable {
 //            onFailure(TitlesMessages.noInternet)
 //            return

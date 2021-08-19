@@ -13,9 +13,6 @@
 		430DAE3C26CA234000B2A57F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DAE3B26CA234000B2A57F /* ActivityIndicator.swift */; };
 		430DAE3D26CA234000B2A57F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DAE3B26CA234000B2A57F /* ActivityIndicator.swift */; };
 		430DAE3E26CA234000B2A57F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DAE3B26CA234000B2A57F /* ActivityIndicator.swift */; };
-		4342B5D626C21DF800DCB370 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5D526C21DF800DCB370 /* ErrorMessage.swift */; };
-		4342B5D726C21DF800DCB370 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5D526C21DF800DCB370 /* ErrorMessage.swift */; };
-		4342B5D826C21DF800DCB370 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5D526C21DF800DCB370 /* ErrorMessage.swift */; };
 		4342B5E026C2202100DCB370 /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5DF26C2202100DCB370 /* AppUtilities.swift */; };
 		4342B5E126C2202100DCB370 /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5DF26C2202100DCB370 /* AppUtilities.swift */; };
 		4342B5E226C2202100DCB370 /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B5DF26C2202100DCB370 /* AppUtilities.swift */; };
@@ -86,7 +83,6 @@
 /* Begin PBXFileReference section */
 		430DAE2E26CA1A6B00B2A57F /* HomeSearchBarDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchBarDelegates.swift; sourceTree = "<group>"; };
 		430DAE3B26CA234000B2A57F /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		4342B5D526C21DF800DCB370 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		4342B5DF26C2202100DCB370 /* AppUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtilities.swift; sourceTree = "<group>"; };
 		4343ED5A26C57AC1003F460B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4343ED6426C57E87003F460B /* HomePhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePhotosCell.swift; sourceTree = "<group>"; };
@@ -264,7 +260,6 @@
 				43CB15E026C169FC0038B396 /* NetworkReachability.swift */,
 				43CB15D326C168730038B396 /* ServerCommManager.swift */,
 				43CB15F326C191C60038B396 /* NetworkSettings.swift */,
-				4342B5D526C21DF800DCB370 /* ErrorMessage.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -417,7 +412,6 @@
 				43B01AE826C2D06400D9AA76 /* ImageCacheManager.swift in Sources */,
 				4343ED6C26C58D79003F460B /* HomePhotosDataSource.swift in Sources */,
 				43CB15CA26C1680D0038B396 /* APIManager.swift in Sources */,
-				4342B5D626C21DF800DCB370 /* ErrorMessage.swift in Sources */,
 				4342B5E026C2202100DCB370 /* AppUtilities.swift in Sources */,
 				43CB160626C195DC0038B396 /* APIKeys.swift in Sources */,
 				4343ED7326C58D8F003F460B /* HomePhotosViewModel.swift in Sources */,
@@ -443,7 +437,6 @@
 				43CB15A626C157A80038B396 /* PhotosSearchModel.swift in Sources */,
 				43CB161126C19F740038B396 /* CommonUtilities.swift in Sources */,
 				43CB15E226C169FC0038B396 /* NetworkReachability.swift in Sources */,
-				4342B5D726C21DF800DCB370 /* ErrorMessage.swift in Sources */,
 				43CB15F526C191C60038B396 /* NetworkSettings.swift in Sources */,
 				43CB15D526C168730038B396 /* ServerCommManager.swift in Sources */,
 				43CB15FD26C194FE0038B396 /* APIConstants.swift in Sources */,
@@ -468,7 +461,6 @@
 				43CB15A726C157A80038B396 /* PhotosSearchModel.swift in Sources */,
 				43CB161226C19F740038B396 /* CommonUtilities.swift in Sources */,
 				43CB15E326C169FC0038B396 /* NetworkReachability.swift in Sources */,
-				4342B5D826C21DF800DCB370 /* ErrorMessage.swift in Sources */,
 				43CB15F626C191C60038B396 /* NetworkSettings.swift in Sources */,
 				43CB15D626C168730038B396 /* ServerCommManager.swift in Sources */,
 				43CB15FE26C194FE0038B396 /* APIConstants.swift in Sources */,
@@ -628,15 +620,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 64744ZVM86;
 				INFOPLIST_FILE = FlickerPhotosSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MDS.FlickerPhotosSearch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oraclecube.bersatu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "OracleCube Bersatu iOS Debug";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -647,15 +642,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 64744ZVM86;
 				INFOPLIST_FILE = FlickerPhotosSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MDS.FlickerPhotosSearch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oraclecube.bersatu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "OracleCube Bersatu iOS Debug";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

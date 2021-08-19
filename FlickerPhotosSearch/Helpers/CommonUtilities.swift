@@ -67,7 +67,6 @@ class CommonUtilities: NSObject {
     
     // MARK: - Directory
     static func savePhotoToDirectory(image: UIImage, imageName: String) -> (isSuccess: Bool, message: String) {
-        print("Preparing to save image ===")
         
         let defaultFileManager = FileManager.default
         let dirPath = defaultFileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -98,7 +97,6 @@ class CommonUtilities: NSObject {
     }
     
     static func loadAllPhotosFromDirectory() -> (photosPath: [String]?, photosIDs: [String]?, errorMessage: String?) {
-        print("Preparing to load saved image ===")
         
         let defaultFileManager = FileManager.default
         let dirPath = defaultFileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -128,7 +126,6 @@ class CommonUtilities: NSObject {
             return (arrPhotosPath, arrPhotosIDs, "")
             
         } catch let error as NSError {
-            print(error.localizedDescription)
             return ([],[], error.localizedDescription)
         }
     }
