@@ -29,11 +29,13 @@ public class ServerCommManager: NSObject {
                                         onSuccess :@escaping successCompletion,
                                         onFailure : @escaping failureCompletion){
         
-        // 1 Internet Connection Avail?
-//        if !networkReachability.isReachable {
-//            onFailure(TitlesMessages.noInternet)
-//            return
-//        }
+        #if !targetEnvironment(simulator)
+        // 1 Internet connection available?
+        if !networkReachability.isReachable {
+            onFailure(TitlesMessages.noInternet)
+            return
+        }
+        #endif
         
         // 2 URL Request Settings
        var urlRequest              = requestInfo

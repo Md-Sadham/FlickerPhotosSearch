@@ -35,7 +35,7 @@ class HomePhotosViewModel : NSObject {
     }
     
     func loadSavedPhotos() {
-        var savedPhotosModels : [PhotoModel] = []
+        var savedPhotosModel : [PhotoModel] = []
         
         // savedPhotos => is a tuple variable having save photos paths and fileNames
         let savedPhotos = CommonUtilities.loadAllPhotosFromDirectory()
@@ -43,7 +43,7 @@ class HomePhotosViewModel : NSObject {
         // Saved Photos App Directory Paths
         let photosPath = savedPhotos.photosPath ?? []
         
-        // We using flicker photo ID as filename for saved photo
+        // We used flicker photo ID as filename when saving photo
         let photosIDs = savedPhotos.photosIDs ?? []
         
         do {
@@ -58,16 +58,16 @@ class HomePhotosViewModel : NSObject {
                 
                 let modelData = try JSONSerialization.data(withJSONObject: dictModel, options: .prettyPrinted)
                 let savedPhotoModel = try JSONDecoder().decode(PhotoModel.self, from: modelData)
-                savedPhotosModels.append(savedPhotoModel)
+                savedPhotosModel.append(savedPhotoModel)
             }
-        } catch let error {
-            print("ERROR - load Saved Photos: ", error.localizedDescription)
+        } catch _ {
+            
         }
         
         // self.photosData is a property observer - not called when assign value inside init().
         // So, update the value under dispatch main queue / separate queue.
         DispatchQueue.main.async {
-            self.photosData = savedPhotosModels
+            self.photosData = savedPhotosModel
         }
     }
     
@@ -90,12 +90,10 @@ class HomePhotosViewModel : NSObject {
         
         self.apiService.photosSearchService(parameters: parameters) { (searchResultsModel) in
             
-            // Compare Save Photos models with flicker results models.
+            // Compare Save Photos model with flicker results model.
             // If any photos from flicker are already exist in saved photos then
-            // remove it from results models.
+            // remove it from results model.
             let filteredPhotosModel = self.filterSavedPhotosInSearchResults(searchPhotosModel: searchResultsModel.photos?.photo ?? [])
-            
-            
             self.photosData += filteredPhotosModel
             
         } failed: { (error) in
@@ -106,7 +104,7 @@ class HomePhotosViewModel : NSObject {
     func filterSavedPhotosInSearchResults(searchPhotosModel: [PhotoModel]) -> [PhotoModel] {
         
         // Flicker photo ID is the filename for saved photo
-        // Using photo ID, we remove those photos from flicker results.
+        // Using photo ID, we remove those photos in flicker results.
         
         let savedPhotosPathsArray = CommonUtilities.loadAllPhotosFromDirectory()
         if savedPhotosPathsArray.photosPath?.count == 0 {

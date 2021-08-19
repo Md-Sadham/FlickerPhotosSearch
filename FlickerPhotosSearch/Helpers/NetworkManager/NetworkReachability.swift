@@ -23,12 +23,10 @@ public class NetworkReachability {
             self.isReachableOnCellular = path.isExpensive
 
             if path.status == .satisfied {
-                print("We're connected!")
+                // "We're connected!"
             } else {
-                print("No connection.")
+                // "No connection."
             }
-            
-            print("Is Reachable: ", self.isReachable)
         }
 
         let queue = DispatchQueue(label: "NetworkReachability")

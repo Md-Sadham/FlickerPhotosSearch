@@ -10,20 +10,20 @@ import UIKit
 extension HomeViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.flickerSearch(searchBar.text)
         view.endEditing(true)
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     }
 
     func flickerSearch(_ searchText: String?) {

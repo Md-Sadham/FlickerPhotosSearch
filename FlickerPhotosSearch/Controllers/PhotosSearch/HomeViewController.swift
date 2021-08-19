@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePhotosInDirectory))
         self.navigationItem.rightBarButtonItem  = saveButton
+        self.navigationItem.title = "Flickr Photos"
         
         configSubviews()
         layoutUIConstraints()
@@ -59,7 +60,6 @@ class HomeViewController: UIViewController {
         searchBar?.delegate = self
         searchBar?.text = Constants.defaultFlickerSearch
         parentViewForSearchBar?.addSubview(searchBar!)
-        
         
         // UICollectionView
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), collectionViewLayout: UICollectionViewFlowLayout())
@@ -98,7 +98,7 @@ class HomeViewController: UIViewController {
         // Initiate View Model
         self.photosViewModel = HomePhotosViewModel(searchText: searchText)
         
-        // Call once didSet saved photos in PhotoModel and/or write Flicker API results in PhotoModel
+        // Call once didSet saved photos in PhotoModel and/or didSet Flicker API results in PhotoModel
         self.photosViewModel.bindPhotosDataToVC = {
             self.updatePhotosDataSource()
                                     
@@ -145,7 +145,13 @@ class HomeViewController: UIViewController {
                 let fileName = photoID + ".jpg"
                 let results = CommonUtilities.savePhotoToDirectory(image: image, imageName: fileName)
                 
-                CommonUtilities.showAlert(title: TitlesMessages.success, message: results.message, controller: self)
+                CommonUtilities.showAlertWithDismissHandler(title: TitlesMessages.success, message: results.message, controller: self) { (ok) in
+                    
+                    // TODO: Should not call view model. Find easy way to update photoModel.
+                    self.selectedPhotoModel = nil
+                    self.setupViewModel(searchText: self.searchBar?.text ?? Constants.defaultFlickerSearch)
+
+                }
             } else {
                 CommonUtilities.showAlert(title: TitlesMessages.failed, message: "Flicker Photo ID is missing. Cannot save the image.", controller: self)
             }

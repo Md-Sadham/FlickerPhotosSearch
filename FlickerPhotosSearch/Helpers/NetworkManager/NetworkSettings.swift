@@ -12,7 +12,7 @@ final class NetworkSettings {
     static let timeOut  = 300
     
     enum HttpMethod: String {
-        case GET, POST, PUT, DELETE, PATCH
+        case GET, POST, PUT, DELETE
     }
 
     static func request(method: HttpMethod, url: URL) -> URLRequest {
