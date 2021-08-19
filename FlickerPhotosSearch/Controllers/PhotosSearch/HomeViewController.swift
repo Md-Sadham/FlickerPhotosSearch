@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePhotosInDirectory))
         self.navigationItem.rightBarButtonItem  = saveButton
-        self.navigationItem.title = "Flicker Photos"
+        self.navigationItem.title = "Flickr Photos"
         
         configSubviews()
         layoutUIConstraints()
@@ -147,7 +147,7 @@ class HomeViewController: UIViewController {
                 
                 CommonUtilities.showAlertWithDismissHandler(title: TitlesMessages.success, message: results.message, controller: self) { (ok) in
                     
-                    // TODO: Should not call view model. Instead, find way to update photoModel.
+                    // TODO: Should not call view model. Find easy way to update photoModel.
                     self.selectedPhotoModel = nil
                     self.setupViewModel(searchText: self.searchBar?.text ?? Constants.defaultFlickerSearch)
 
