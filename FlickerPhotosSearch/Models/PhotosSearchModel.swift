@@ -32,7 +32,7 @@ struct PhotoModel: Codable {
         case isSavedPhoto, savedPhotoPath
     }
     
-    func flickrImageURL() -> String? {
+    func flickerImageURL() -> String? {
         
         /**
          Flicker Documentation: https://www.flickr.com/services/api/misc.urls.html

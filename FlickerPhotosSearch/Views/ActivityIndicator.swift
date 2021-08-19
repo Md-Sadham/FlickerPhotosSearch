@@ -8,34 +8,20 @@
 import UIKit
 
 class ActivityIndicator: NSObject {
-    let appDelegate = UIApplication.shared.delegate
     var parentView: UIView?
-
-    /*
-     If user has not provided view where activity indicator should pop up.
-     The default view will be view of the current rootViewController of window.
-     */
-    var defaultView: UIView? {
-        get {
-            if let view = self.parentView {
-                return view
-            } else {
-                return appDelegate?.window??.rootViewController?.view
-            }
-        }
-    }
 
     var activityIndicatorView: UIActivityIndicatorView? {
         get {
-            guard let indicatorView = self.defaultView?.superview as? UIActivityIndicatorView else {
+            guard let indicatorView = self.parentView?.superview?.viewWithTag(999) as? UIActivityIndicatorView else {
                 let activityIndicator              = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
                 activityIndicator.frame            = CGRect.zero
-                activityIndicator.center           = (self.defaultView?.center) ?? CGPoint(x: 0, y: 0)
+                activityIndicator.center           = (self.parentView?.center) ?? CGPoint(x: 0, y: 0)
                 activityIndicator.hidesWhenStopped = true
+                activityIndicator.tag              = 999
                 activityIndicator.tintColor        = .systemBlue
                 activityIndicator.startAnimating()
                 
-                defaultView?.superview?.addSubview(activityIndicator)
+                parentView?.superview?.addSubview(activityIndicator)
                 
                 return activityIndicator
             }
@@ -43,7 +29,8 @@ class ActivityIndicator: NSObject {
         }
     }
 
-    func start() {
+    func show(inView: UIView) {
+        self.parentView = inView
         self.activityIndicatorView?.startAnimating()
     }
 

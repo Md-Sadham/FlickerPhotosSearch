@@ -47,6 +47,4 @@ class HomePhotosDataSource<Cell: HomePhotosCell, T>: NSObject, UICollectionViewD
         
         return cell
     }
-    
-    
 }

@@ -23,7 +23,7 @@ class HomePhotosCell: UICollectionViewCell {
                 let image = UIImage.init(contentsOfFile: imagePath)
                 photoImageView.image = image
             }
-            else if let url = photo.flickrImageURL() {
+            else if let url = photo.flickerImageURL() {
                 photoImageView.loadImageFrom(url: url, placeholder: UIImage.init(systemName: "photo"))
             }
         }
