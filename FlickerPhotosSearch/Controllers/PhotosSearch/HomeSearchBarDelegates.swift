@@ -30,6 +30,8 @@ extension HomeViewController: UISearchBarDelegate {
         guard let strText = searchText else {return}
         if !strText.isEmpty {
             let searchText: String =  searchText!.replacingOccurrences(of: " ", with: "")
+            
+            // Call View Model. Call Flicker API.
             self.setupViewModel(searchText: searchText)
         }
     }
