@@ -10,12 +10,15 @@ import UIKit
 extension HomeViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -23,13 +26,12 @@ extension HomeViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    }
-
     func flickerSearch(_ searchText: String?) {
         guard let strText = searchText else {return}
         if !strText.isEmpty {
             let searchText: String =  searchText!.replacingOccurrences(of: " ", with: "")
+            
+            // Call View Model. Call Flicker API.
             self.setupViewModel(searchText: searchText)
         }
     }
